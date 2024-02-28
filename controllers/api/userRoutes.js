@@ -69,16 +69,6 @@ router.post('/signup', async (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
   
-      // Check if the user has a collection
-      const collection = await Collection.findOne({ where: { user_id: dbUserData.id } });
-      if (!collection) {
-        // If the user doesn't have a collection, create one
-        await Collection.create({ user_id: dbUserData.id });
-        console.log('Collection created for user:', dbUserData.id);
-        } else {
-          console.log('User already has a collection:', dbUserData.id);
-        }
-  
         res.redirect('/');
       });
   

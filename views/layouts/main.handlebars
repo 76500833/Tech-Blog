@@ -8,25 +8,23 @@
   <title>Document</title>
 </head>
 
-{{!-- //TODO home, dashboad --}}
-{{#if loggedIn}}
 
+<header>
+
+{{#if loggedIn}}
 
 <button type="button" id="logout">Logout</button>
 
 {{else}}
-{{!-- <a href="/login">Login</a> --}}
-<form action="/login" method="get">
-  <button type="submit">Login</button>
-</form>
+<a href="/login">Login</a>
 {{/if}}
 
 {{!-- These buttons need to take you to login if you are not logged in --}}
-<button type="button" id="Dashboard">Dashboard</button>
+<a href="/dashboard">dashboard</a>
 
-<button type="button" id="Homepage">Homepage</button>
-</div>
-</nav>
+<a href="/">home</a>
+
+
 
 </header>
 

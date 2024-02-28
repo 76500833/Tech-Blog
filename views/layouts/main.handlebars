@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="../../public/css/">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
-        {{#if loggedIn}}
+{{!-- //TODO home, dashboad --}}
+{{#if loggedIn}}
 
 
-        <button type="button" id="logout">Logout</button>
-        
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
-      </div>
-    </nav>
+<button type="button" id="logout">Logout</button>
 
-  </header>
+{{else}}
+{{!-- <a href="/login">Login</a> --}}
+<form action="/login" method="get">
+  <button type="submit">Login</button>
+</form>
+{{/if}}
+
+{{!-- These buttons need to take you to login if you are not logged in --}}
+<button type="button" id="Dashboard">Dashboard</button>
+
+<button type="button" id="Homepage">Homepage</button>
+</div>
+</nav>
+
+</header>
 
 <body>
-    {{{ body }}}
+
+  {{{ body }}}
 </body>
 
-  {{#if loggedIn}}
-   <script src="/js/logout.js"></script>
-   {{/if}}
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
 </body>
 
 </html>

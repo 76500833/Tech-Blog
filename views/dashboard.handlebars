@@ -1,3 +1,66 @@
 {{!-- Dashboard
 This will contain your posts
 You can see the homepage but not the dashboard because it depends on whos logged in --}}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI/UX Tips - Feedback</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+        <style>
+      .post-form {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+<button id="show-form-button">Show Form</button>
+    <section class="post-form">
+      <form
+        class="flex-row justify-center justify-space-between-md align-center"
+        id="feedback-form"
+      >
+        <div class="col-12 col-lg-9">
+          <input
+            name="titleText"
+            id="titleOfPost"
+            placeholder="Enter title here"
+
+          />
+        </div>
+        <div class="col-12">
+          <textarea
+            name="feedbackText"
+            id="bodyOfPost"
+            placeholder="Enter post here"
+            value=""
+            class="form-input w-100"
+          ></textarea>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <button class="btn btn-primary btn-block py-3" type="submit">
+            Submit quote
+          </button>
+        </div>
+      </form>
+    </section>
+    <script src="../public/js/post.js"></script>
+<script>
+  var button = document.getElementById('show-form-button');
+  button.addEventListener('click', function() {
+    var form = document.querySelector('.post-form');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+      button.innerHTML = 'Hide Submission';
+    } else {
+      form.style.display = 'none';
+      button.innerHTML = 'Submit A Quote';
+    }
+  });
+</script>
+  </body>
+</html>
+  </body>
+</html>

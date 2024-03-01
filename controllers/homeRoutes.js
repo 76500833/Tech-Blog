@@ -4,6 +4,7 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
     res.render('homepage', {
       loggedIn: req.session.loggedIn
+      //
     });
 });
 router.get('/signup', async (req, res) => {
@@ -25,10 +26,17 @@ router.get('/signup', async (req, res) => {
     }
   });
 
-  router.get('/dashboard', async (req, res)=> {
+
+  function ensureAuthenticated( req, res, next) {
+    if(req.session.loggedIn) {
+      return next()
+    }
+    res.redirect('/login')
+
+  }
+  router.get('/dashboard', ensureAuthenticated, async (req, res)=> {
     try {
       res.render('dashboard', {
-
       })
     }catch (err) {
       res.status(500).json(err)

@@ -89,4 +89,9 @@ router.post('/signup', async (req, res) => {
     }
   });
 
+  router.post('/dashboard', (req, res) => {
+    console.log(req.body);
+    res.json( req.body );
+  })
+
 module.exports = router;

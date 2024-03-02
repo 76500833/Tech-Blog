@@ -37,6 +37,8 @@ router.get('/signup', async (req, res) => {
   router.get('/dashboard', ensureAuthenticated, async (req, res)=> {
     try {
       res.render('dashboard', {
+        layout: 'main',
+        loggedIn: req.session.loggedIn
       })
     }catch (err) {
       res.status(500).json(err)

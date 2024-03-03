@@ -10,10 +10,10 @@ if (postForm) {
     // Get the username text and add it to a variable
     let post = document.getElementById('bodyOfPost').value.trim();
 
-    // Create an object with the username and feedback
     const postObj = {
       title,
       post,
+      user_id: userId,
     };
 
     // Fetch POST request to the server

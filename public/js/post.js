@@ -2,20 +2,24 @@ const postForm = document.getElementById('post-form');
 console.log("hello")
 
 // Handle when a user submits feedback
-if (postForm) {
+
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+    console.log('INSIDE FORM')
     // Get the feedback text from the DOM and assign it to a variable
-    let title = document.getElementById('titleOfPost').value;
+    let title = document.getElementById('title').value;
     // Get the username text and add it to a variable
-    let post = document.getElementById('bodyOfPost').value.trim();
+    let post = document.getElementById('body').value.trim();
     const postObj = {
       title,
       post,
-      user_id: userId,
+  
     };
-    console.log(postObj)
+    console.log('TITLE', title);
+    console.log('POST', post);
+    p = document.createElement('p').innerHTML = (`${title}, ${post}`)
+    document.body.appendChild(p);
+   
     // Fetch POST reaquest to the server
     try {
       console.log(postObj)
@@ -31,10 +35,9 @@ if (postForm) {
       }
 
       const data = await response.json();
-      alert(data.status);
+      
       
     } catch (error) {
       console.error('An error occurred:', error);
     } 
   });
-}

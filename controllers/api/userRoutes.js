@@ -96,7 +96,7 @@ router.post('/signup', async (req, res) => {
       const newPost = await Post.create({
         title: req.body.title, // assuming req.body.title contains the title
         post: req.body.post, // assuming req.body.post contains the post
-        user_id: req.body.user_id // assuming you want to associate the post with a specific user
+        user_id: req.session.user_id // assuming you want to associate the post with a specific user
       });
       res.status(200).json(newPost);
     } catch (err) {

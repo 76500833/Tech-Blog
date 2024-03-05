@@ -36,10 +36,18 @@ router.get('/signup', async (req, res) => {
   }
   router.get('/dashboard', ensureAuthenticated, async (req, res)=> {
     try {
+      //Post.find all
+      const userPosts = await Post.findAll({
+
+      })
+      const posts = userPosts.map((post) => post.get({ plain: true }));
+
       res.render('dashboard', {
         layout: 'main',
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        posts
       })
+      //
     }catch (err) {
       res.status(500).json(err)
     }

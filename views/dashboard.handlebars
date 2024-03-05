@@ -12,7 +12,7 @@ You can see the homepage but not the dashboard because it depends on whos logged
   </head>
   <body>
 
-    <section class="post-form">
+    <section id="post-form">
       <form
         class="flex-row justify-center justify-space-between-md align-center"
         id="feedback-form"
@@ -20,7 +20,7 @@ You can see the homepage but not the dashboard because it depends on whos logged
         <div class="col-12 col-lg-9">
           <input
             name="titleText"
-            id="titleOfPost"
+            id="title"
             placeholder="Enter title here"
 
           />
@@ -28,7 +28,7 @@ You can see the homepage but not the dashboard because it depends on whos logged
         <div class="col-12">
           <textarea
             name="feedbackText"
-            id="bodyOfPost"
+            id="body"
             placeholder="Enter post here"
             value=""
             class="form-input w-100"
@@ -42,6 +42,12 @@ You can see the homepage but not the dashboard because it depends on whos logged
         </div>
       </form>
     </section>
+{{#each posts as |post|}}
+
+  {{post.title}}
+
+{{post.body}}  {{/each}}
+
     <script src="/js/post.js"></script>
 
   </body>

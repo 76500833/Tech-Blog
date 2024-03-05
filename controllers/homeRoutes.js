@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const { Post }= require('../models')
 
 router.get('/', (req, res) => {
     res.render('homepage', {
@@ -36,10 +36,18 @@ router.get('/signup', async (req, res) => {
   }
   router.get('/dashboard', ensureAuthenticated, async (req, res)=> {
     try {
+      //Post.find all
+      const userPosts = await Post.findAll({
+
+      })
+      const posts = userPosts.map((post) => post.get({ plain: true }));
+      console.log(posts)
       res.render('dashboard', {
         layout: 'main',
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        posts
       })
+      //
     }catch (err) {
       res.status(500).json(err)
     }

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../../models/User');
+const Post = require('../../models/Posts');
+
 router.post('/logout', (req, res) => {
     // When the user logs out, destroy the session
     if (req.session.loggedIn) {
@@ -89,9 +91,21 @@ router.post('/signup', async (req, res) => {
     }
   });
 
-  router.post('/dashboard', (req, res) => {
-    console.log(req.body);
-    res.json( req.body );
-  })
+  router.post('/dashboard', async (req, res) => {
+    try {
+      const newPost = await Post.create({
+        title: req.body.title, // assuming req.body.title contains the title
+        post: req.body.post, // assuming req.body.post contains the post
+        user_id: req.session.user_id // assuming you want to associate the post with a specific user
+      });
+      res.status(200).json(newPost);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  });
+
+  
+
+  
 
 module.exports = router;

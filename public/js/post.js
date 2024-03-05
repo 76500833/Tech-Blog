@@ -17,8 +17,8 @@ console.log("hello")
     };
     console.log('TITLE', title);
     console.log('POST', post);
-    p = document.createElement('p').innerHTML = (`${title}, ${post}`)
-    document.body.appendChild(p);
+    // p = document.createElement('p').innerHTML = (`${title}, ${post}`)
+    // document.body.appendChild(p);
    
     // Fetch POST reaquest to the server
     try {

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const { Post }= require('../models')
 
 router.get('/', (req, res) => {
     res.render('homepage', {
@@ -41,7 +41,7 @@ router.get('/signup', async (req, res) => {
 
       })
       const posts = userPosts.map((post) => post.get({ plain: true }));
-
+      console.log(posts)
       res.render('dashboard', {
         layout: 'main',
         loggedIn: req.session.loggedIn,

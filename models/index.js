@@ -6,7 +6,7 @@ const Post = require('./Posts')
 
 
 
-User.hasMany(post, {
+User.hasMany(Post, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
   });
@@ -15,4 +15,4 @@ Post.belongsTo(User, {
     foreignKey: 'user_id'
 })
 
-module.expports = { User, Post}
+module.exports = { User, Post}
